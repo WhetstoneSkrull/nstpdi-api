@@ -25,7 +25,7 @@ class AuthController extends Controller
         'last_name' => 'required|string',
         'email' => 'required|string|email|unique:users',
         'password' => 'required|string|confirmed',
-        'contact' => 'required|string',
+        'primary_contact' => 'required|string',
     ]);
 
     $user = new User([
@@ -33,23 +33,15 @@ class AuthController extends Controller
         'last_name' => $request->last_name,
         'email' => $request->email,
         'pic'=> ('placeholder.jpg'),
-        'contact' => $request->contact,
-        'other_names' => $request->other_names,
-        'dob' => $request->dob,
-        'place_of_birth' => $request->place_of_birth,
-        'state_of_origin' => $request->state_of_origin,
-        'home_address' => $request->home_address,
-        'gender' => $request->gender,
-        'marital_status' => $request->marital_status,
-        'bank_name' => $request->bank_name,
-        'bank_account_number' => $request->bank_account_number,
-        'bank_location' => $request->bank_location,
-        'bank_sort_code' => $request->bank_sort_code,
-        'tax_identification_number' => $request->tax_identification_number,
-        'pension_fund_admin' => $request->pension_fund_admin,
-        'retirement_account_pin' => $request->retirement_account_pin,
-        'nhf_account' => $request->nhf_account,
-        'activation_token' => str_random(60),
+        'primary_contact' => $request->primary_contact,
+        'secondary_contact' => $request->secondary_contact,
+        // 'dob' => $request->dob,
+        'location' => $request->location,
+        'is_admin' => $request->is_admin,
+        'place_of_work' => $request->place_of_work,
+        'position_held' => $request->position_held,
+        'user_type' => $request->user_type,
+        // 'activation_token' => str_random(60),
         'password' => bcrypt($request->password)
     ]);
     $user->save();
