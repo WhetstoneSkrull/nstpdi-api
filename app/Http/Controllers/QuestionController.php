@@ -25,7 +25,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-      $q = Question::orderBy('created_at','desc')->paginate(100);
+      $q = Question::inRandomOrder()->paginate(250);
        return QuestionResource::collection($q);
 
       // return response()->json($q,200);
